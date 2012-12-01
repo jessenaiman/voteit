@@ -17,7 +17,9 @@ Voteit::Application.routes.draw do
   resources :questions
 
 
-  resources :groups
+  resources :groups do
+    match 'join' => 'groups#join'
+  end
 
 
   root :to => "home#index"

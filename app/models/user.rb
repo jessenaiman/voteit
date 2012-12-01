@@ -11,6 +11,8 @@ class User
   index({ email: 1 }, { unique: true, background: true })
   has_and_belongs_to_many :groups
 
+  validates_presence_of :name
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']

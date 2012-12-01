@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :user do
     provider "twitter"
+    email "jessenaiman@gmail.com"
     uid "12345"
     name "Bob"
   end

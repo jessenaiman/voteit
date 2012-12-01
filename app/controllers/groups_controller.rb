@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /groups
   # GET /groups.json
   def index
@@ -78,6 +79,19 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    @group = Group.find(params[:group_id])
+    @group.users << current_user
+    respond_to do |format|
+      if @group.save
+        format.html { redirect_to groups_url, notice: 'You have been added to #{@group.name}.' }
+        format.json { render json: @group, status: :created, location: @group }
+      else
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
