@@ -1,12 +1,15 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :provider, type: String
   field :uid, type: String
   field :name, type: String
   field :email, type: String
+  field :location, type: String
   attr_accessible :provider, :uid, :name, :email
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
+  has_and_belongs_to_many :groups
 
   def self.create_with_omniauth(auth)
     create! do |user|

@@ -34,36 +34,40 @@ describe AnswersController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all answers as @answers" do
-      answer = Answer.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:answers).should eq([answer])
-    end
+  def question
+    @question ||= FactoryGirl.build(:question)
   end
 
-  describe "GET show" do
-    it "assigns the requested answer as @answer" do
-      answer = Answer.create! valid_attributes
-      get :show, {:id => answer.to_param}, valid_session
-      assigns(:answer).should eq(answer)
-    end
-  end
+  # describe "GET index" do
+  #   it "assigns all answers as @answers" do
+  #     answer = FactoryGirl.build(:answer)
+  #     get :index, {}, valid_session
+  #     assigns(:answers).should eq([answer])
+  #   end
+  # end
 
-  describe "GET new" do
-    it "assigns a new answer as @answer" do
-      get :new, {}, valid_session
-      assigns(:answer).should be_a_new(Answer)
-    end
-  end
+  # describe "GET show" do
+  #   it "assigns the requested answer as @answer" do
+  #     answer = Answer.create! valid_attributes
+  #     get :show, {:id => answer.to_param}, valid_session
+  #     assigns(:answer).should eq(answer)
+  #   end
+  # end
 
-  describe "GET edit" do
-    it "assigns the requested answer as @answer" do
-      answer = Answer.create! valid_attributes
-      get :edit, {:id => answer.to_param}, valid_session
-      assigns(:answer).should eq(answer)
-    end
-  end
+  # describe "GET new" do
+  #   it "assigns a new answer as @answer" do
+  #     get :new, {}, valid_session
+  #     assigns(:answer).should be_a_new(Answer)
+  #   end
+  # end
+
+  # describe "GET edit" do
+  #   it "assigns the requested answer as @answer" do
+  #     answer = Answer.create! valid_attributes
+  #     get :edit, {:id => answer.to_param}, valid_session
+  #     assigns(:answer).should eq(answer)
+  #   end
+  # end
 
   describe "POST create" do
     describe "with valid params" do

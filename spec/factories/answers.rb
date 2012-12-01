@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :answer do
+    association :question
     name "MyString"
     question nil
   end
