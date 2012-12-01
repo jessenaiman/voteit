@@ -1,0 +1,19 @@
+%h1 Listing add_location_to_users
+
+%table
+  %tr
+    %th Location
+    %th
+    %th
+    %th
+
+  - @add_location_to_users.each do |add_location_to_user|
+    %tr
+      %td= add_location_to_user.location
+      %td= link_to 'Show', add_location_to_user
+      %td= link_to 'Edit', edit_add_location_to_user_path(add_location_to_user)
+      %td= link_to 'Destroy', add_location_to_user, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Add location to user', new_add_location_to_user_path

@@ -1,0 +1,16 @@
+= form_for @add_group_to_user do |f|
+  - if @add_group_to_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@add_group_to_user.errors.count, "error")} prohibited this add_group_to_user from being saved:"
+      %ul
+        - @add_group_to_user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :group
+    = f.text_field :group
+  .field
+    = f.label :timestamp
+    = f.text_field :timestamp
+  .actions
+    = f.submit 'Save'

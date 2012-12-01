@@ -1,0 +1,2 @@
+module AddLocationToUsersHelper
+end
