@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :user_vote do
     question_id 1
-    user nil
+    association :user 
   end
 end

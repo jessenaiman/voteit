@@ -6,6 +6,6 @@ FactoryGirl.define do
     hashtag "MyString"
     description "MyText"
     privacy "MyString"
-    user nil
+    association :user
   end
 end

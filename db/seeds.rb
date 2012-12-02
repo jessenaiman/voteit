@@ -7,10 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 admin = User.create!(name: "admin", email: "admin@voteit.ca")
 
-g1 = Group.create!(title: 'Corporate', privacy: "public").users << admin
-g2 = Group.create!(title: 'Occupy Toronto', privacy: "public")
-g3 = Group.create!(title: 'Trivial', privacy: "public")
-g4 = Group.create!(title: 'Urgent', privacy: "public")
-g5 = Group.create!(title: 'Global', privacy: "public")
+groups = ['Corporate', 'Occupy Toronto', 'Trivial', 'Urgent', 'Global']
 
-#q1 = Question.create!(name: "Do you think Vote-It deserves to win?", group: g1)
+groups.each do |group|
+  g = Group.create!(title: group, privacy: "public")
+  g.users << admin
+  g.save
+end
+
+q1 = Question.create!(name: "How Great is AngelHack?", group: Group.first, user: admin)
+
+a = ["Great", "Extreme", "Perfect"]
+a.each do |answer|
+  q1.answers.create!(name: answer)
+end
+  
+(200..1000).to_a.sample.times { q1.votes.create(answer: a.sample) }

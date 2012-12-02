@@ -20,6 +20,8 @@ require 'spec_helper'
 
 describe QuestionsController do
 
+  let(:user){ FactoryGirl.create(:user) }
+
   # This should return the minimal set of attributes required to create a valid
   # Question. As you add validations to Question, be sure to
   # update the return value of this method accordingly.
@@ -31,23 +33,22 @@ describe QuestionsController do
   # in order to pass any filters (e.g. authentication) defined in
   # QuestionsController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {:user_id => user.id}
   end
 
   describe "GET index" do
-    it "assigns all questions as @questions" do
-      question = FactoryGirl.create(:question) #Question.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:questions).should eq([question])
-    end
+    # it "assigns all questions as @questions" do
+    #   question = FactoryGirl.create(:question) #Question.create! valid_attributes
+    #   get :index, {}, valid_session
+    #   assigns(:questions).should eq([question])
+    # end
   end
 
   it "should redirect to index with a notice on successful save" do
-    Question.any_instance.stubs(:valid?).returns(true)
-    post 'create'
+    post 'create', {question: FactoryGirl.attributes_for(:question)}, valid_session
     assigns[:question].should_not be_new_record
     #flash[:notice].should_not be_nil
-    response.should redirect_to(questions_path)
+    response.should redirect_to(question_path(assigns[:question]))
   end
 
   # describe "GET show" do
@@ -58,20 +59,20 @@ describe QuestionsController do
   #   end
   # end
 
-  # describe "GET new" do
-  #   it "assigns a new question as @question" do
-  #     get :new, {}, valid_session
-  #     assigns(:question).should be_a_new(Question)
-  #   end
-  # end
+  describe "GET new" do
+    it "assigns a new question as @question" do
+      get :new, {}, valid_session
+      assigns(:question).should be_a_new(Question)
+    end
+  end
 
-  # describe "GET edit" do
-  #   it "assigns the requested question as @question" do
-  #     question = Question.create! valid_attributes
-  #     get :edit, {:id => question.to_param}, valid_session
-  #     assigns(:question).should eq(question)
-  #   end
-  # end
+  describe "GET edit" do
+    it "assigns the requested question as @question" do
+      question = Question.create! valid_attributes
+      get :edit, {:id => question.to_param}, valid_session
+      assigns(:question).should eq(question)
+    end
+  end
 
   # describe "POST create" do
   #   describe "with valid params" do

@@ -2,7 +2,9 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
-    @votes = Vote.all
+    @group_ids = current_user.groups.only(:id).collect(&:id)
+    raise @group_ids.to_s
+    @votes = Vote.all.where(:group)
 
     respond_to do |format|
       format.html # index.html.erb

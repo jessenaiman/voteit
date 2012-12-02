@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :answer do
     association :question
-    name "MyString"
-    question nil
+    sequence(:name) { |i| "Answer#{i}" }
   end
 end
