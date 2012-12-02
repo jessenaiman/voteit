@@ -1,5 +1,5 @@
 class UserVote
   include Mongoid::Document
-  field :question_id, type: Integer
-  embedded_in :user
+  field :question_id, type: String
+  belongs_to :user
 end

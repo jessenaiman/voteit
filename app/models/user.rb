@@ -13,6 +13,8 @@ class User
 
   validates_presence_of :name
 
+  has_and_belongs_to_many :user_votes
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
