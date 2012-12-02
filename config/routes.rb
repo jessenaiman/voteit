@@ -11,16 +11,11 @@ Voteit::Application.routes.draw do
   resources :votes
 
 
-  
-
-
-  resources :questions do
-    resources :answers
-  end
-
-
   resources :groups do
     match 'join' => 'groups#join'
+    resources :questions do
+      resources :answers
+    end
   end
 
 

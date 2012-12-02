@@ -1,4 +1,7 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+- content_for :head do
+  %script#microloader{:src => "sdk/microloader/development.js", :type => "text/javascript"}
+
+%h3 Vote-It Home
+/ - @users.each do |user|
+/   %p
+/     User: #{link_to user.name, user}

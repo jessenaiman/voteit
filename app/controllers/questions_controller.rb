@@ -42,8 +42,9 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
+    @group = Group.find(params[:group_id])
     if(@question.group == nil)
-      
+
     end
     respond_to do |format|
       if @question.save

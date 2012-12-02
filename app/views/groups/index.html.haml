@@ -14,7 +14,10 @@
       %td= group.hashtag
       %td= group.privacy
       %td= link_to 'Show', group
-      %td= link_to 'Join', '#'
+      -if !current_user.groups.include?(group)
+        %td= link_to 'Join', group_join_path(group)
+      -else
+        %td= link_to 'UnJoin', group_join_path(group)
 
 %br
 

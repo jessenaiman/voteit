@@ -12,6 +12,7 @@
 %p
   %b Privacy:
   = @group.privacy
+= link_to 'New Vote', new_group_question_path(@group)
 
 = link_to 'Edit', edit_group_path(@group)
 \|
