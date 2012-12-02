@@ -13,4 +13,4 @@ g3 = Group.create!(title: 'Trivial', privacy: "public")
 g4 = Group.create!(title: 'Urgent', privacy: "public")
 g5 = Group.create!(title: 'Global', privacy: "public")
 
-q1 = Question.create!()
+#q1 = Question.create!(name: "Do you think Vote-It deserves to win?", group: g1)

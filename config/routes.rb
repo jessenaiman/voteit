@@ -11,10 +11,12 @@ Voteit::Application.routes.draw do
   resources :votes
 
 
-  resources :answers
+  
 
 
-  resources :questions
+  resources :questions do
+    resources :answers
+  end
 
 
   resources :groups do

@@ -1,4 +1,4 @@
-= form_for @question do |f|
+= simple_form_for @question do |f|
   - if @question.errors.any?
     #error_explanation
       %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
@@ -7,13 +7,13 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.input :name
   .field
-    = f.label :vote_type
-    = f.text_field :vote_type
+    = f.input :vote_type
   .field
     = f.label :flag
     = f.check_box :flag
+  %br
+    
   .actions
     = f.submit 'Save'

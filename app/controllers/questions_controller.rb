@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /questions
   # GET /questions.json
   def index
@@ -14,7 +15,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
-
+    @answers = @question.answers
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @question }
@@ -57,7 +58,6 @@ class QuestionsController < ApplicationController
   # PUT /questions/1.json
   def update
     @question = Question.find(params[:id])
-
     respond_to do |format|
       if @question.update_attributes(params[:question])
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }

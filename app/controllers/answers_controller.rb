@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
   # GET /answers/new.json
   def new
     @answer = Answer.new
-
+    @question = Question.find(params[:question_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @answer }
@@ -41,11 +41,12 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(params[:answer])
-
+    @question = Question.find(params[:question_id])
+    @question.answers << @answer
     respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render json: @answer, status: :created, location: @answer }
+      if @question.save
+        format.html { redirect_to @question, notice: 'Answer was successfully created.' }
+        format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
