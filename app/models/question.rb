@@ -10,6 +10,7 @@ class Question
   field :flag,          type: Boolean, default: false
 
   belongs_to :group
+  belongs_to :user
 
   validates_presence_of :name, :vote_type
   embeds_many :answers

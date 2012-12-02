@@ -5,5 +5,7 @@ FactoryGirl.define do
     name "MyString"
     vote_type "MyString"
     flag false
+    association :group
+    association :user
   end
 end

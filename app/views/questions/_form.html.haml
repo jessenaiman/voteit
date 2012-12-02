@@ -5,14 +5,11 @@
       %ul
         - @question.errors.full_messages.each do |msg|
           %li= msg
+  = f.input :name
+  = f.input :vote_type, :collection => ['SimpleVote', 'MultipleChoice']
+  = f.input :flag
+  = f.input :group, :collection => Group.all
 
-  .field
-    = f.input :name
-  .field
-    = f.input :vote_type
-  .field
-    = f.label :flag
-    = f.check_box :flag
   %br
     
   .actions
