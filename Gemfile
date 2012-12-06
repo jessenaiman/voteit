@@ -28,8 +28,9 @@ gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
 gem "simple_form"
 gem 'devise'
 gem 'twitter'
+gem 'fb_graph'
 
-group :development do
+group :test do
   gem 'shoulda'
   gem 'mocha'
 end

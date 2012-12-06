@@ -3,8 +3,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
-
+    @group = Group.find(params[:group_id])
+    @questions = Question.where(group_id: @group.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @questions }

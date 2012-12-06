@@ -7,6 +7,7 @@
     %th Privacy
     %th
     %th
+    %th
 
   - @groups.each do |group|
     %tr
@@ -18,6 +19,7 @@
         %td= link_to 'Join', group_join_path(group)
       -else
         %td= link_to 'UnJoin', group_join_path(group)
+      %td= link_to 'Questions', group_questions_path(group)
 
 %br
 

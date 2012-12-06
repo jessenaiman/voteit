@@ -1,4 +1,4 @@
-= simple_form_for @question do |f|
+= simple_form_for (@question.group, @question) do |f|
   - if @question.errors.any?
     #error_explanation
       %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
